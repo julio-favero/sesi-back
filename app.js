@@ -20,7 +20,7 @@ const recuperarSenhaRoutes = require('./routes/recuperarSenhaRoutes')
 //Chama a o express criando uma nova aplicação dentro da variavel app
 const app = express();
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: "*",
     credentials: true
 }));
 

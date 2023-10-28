@@ -8,6 +8,8 @@ const examesModels = require('../models/exameModels')
 const atletaModels = require('../models/atletaModels')
 const medicoConvModels = require('../models/medicoConvModels')
 
+const vmIP = require("../config/configPort.json")
+
 class medicoConvControllers {
 
     static async verExame(req, res) {
@@ -23,7 +25,7 @@ class medicoConvControllers {
                 situacao: "ANALISE",
             }, { where: { id_exame_med: idMedConv } })
             fs.writeFileSync(path.join(__dirname, '../download/' + request[0]['idexame'] + '.pdf'), request[0]['pdf'])
-            res.status(200).json({ msg: `http://localhost:3000/${request[0]['idexame']}.pdf` })
+            res.status(200).json({ msg: `http://${vmIP.vmIP.server_ip_port}/${request[0]['idexame']}.pdf` })
         }
         catch (err) {
             res.send({ msg: "Não foi possível acessaor o servidor" })

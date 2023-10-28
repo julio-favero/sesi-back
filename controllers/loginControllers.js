@@ -10,6 +10,8 @@ const gestorAdminModels = require('../models/gestorAdminModels')
 const gestorModels = require('../models/gestorModels')
 const medicoModels = require('../models/medicoModels')
 const medicoConvModels = require('../models/medicoConvModels');
+
+const vmIP = require("../config/configPort.json")
 // Importar módulos do banco de dados
 
 const tabela = [atletaModels, gestorAdminModels, gestorAdminModels, gestorModels, medicoModels, medicoConvModels]

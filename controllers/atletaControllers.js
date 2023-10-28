@@ -10,6 +10,7 @@ const atletaModels = require("../models/atletaModels"); // "atletaModels" é uma
 const examesModels = require("../models/exameModels"); // "exameModels" é uma variável que vai receber o model do exame
 const atletaTel = require("../models/telAtletaModels.js"); // "atletaTel" é uma variável que vai receber o model telefone do atleta
 
+const vmIP = require("../config/configPort.json")
 // Criando class "atletaControllers" para fazer o CRUD
 class atletaControllers {
 
@@ -134,7 +135,7 @@ class atletaControllers {
     for(let x = 0; x < request.length; x++){
     if(request[x]['pdfexame'] != null){
         fs.writeFileSync(path.join(__dirname, '../download/' + request[x]['idexame'] + '.pdf'), request[x]['pdfexame'])
-        arrayExame.push(`http://localhost:3001/${request[x]['idexame']}.pdf`)
+        arrayExame.push(`http://${vmIP.vmIP.server_ip_port}/${request[x]['idexame']}.pdf`)
         arrayId.push(request[x]['idexame']) 
         }
     else(
@@ -182,7 +183,7 @@ class atletaControllers {
       try{
         fs.writeFileSync(path.join(__dirname, "../download/" + "guia_exame-" + request[0].idexame + ".pdf"), request[0]["pdfexame"]);
         
-      res.send({ msg: `http://localhost:3001/guia_exame-${request[0].idexame}.pdf` }); // envia a resposta para o front
+      res.send({ msg: `http://${vmIP.vmIP.server_ip_port}/guia_exame-${request[0].idexame}.pdf` }); // envia a resposta para o front
       }
       catch(err){        
         console.log("Vaiiii Erro")

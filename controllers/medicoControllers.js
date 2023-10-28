@@ -13,6 +13,7 @@ const { Op } = require("sequelize");
 const { request } = require('http');
 const multer = require('multer');
 
+const vmIP = require("../config/configPort.json")
 
 // Criando class "atletaControllers" para fazer o CRUD
 class medicoControllers {
@@ -242,7 +243,7 @@ class medicoControllers {
             for(let x = 0; x < request.length; x++){
                 if(request[x]['pdfatleta'] != null){
                     fs.writeFileSync(path.join(__dirname, '../download/' + request[x]['idexame'] + '.pdf'), request[x]['pdfatleta'])
-                    arrayExame.push(`http://localhost:3001/${request[x]['idexame']}.pdf`)
+                    arrayExame.push(`http://${vmIP.vmIP.server_ip_port}/${request[x]['idexame']}.pdf`)
                     arrayId.push(request[x]['idexame']) 
                     }
                 else(

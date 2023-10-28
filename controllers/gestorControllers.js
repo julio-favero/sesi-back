@@ -27,6 +27,8 @@ const telAtletaModels = require("../models/telAtletaModels");
 const {Op} = require('sequelize');
 const examesModels = require('../models/exameModels');
 
+const vmIP = require("../config/configPort.json")
+
 // Armazenar os Models
 const perfil = {
     'Atleta' : [atletaModels, enderecoAtletaModels, telAtletaModels],
